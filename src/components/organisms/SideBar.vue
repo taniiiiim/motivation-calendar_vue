@@ -22,21 +22,20 @@ export default {
 
 .task-add-btn {
   background: #fff;
-  height: 100px;
-  width: 100px;
-  line-height: 50px;
+  height: 15vh;
+  width: 15vh;
+  line-height: 10vh;
   border: 1px solid #dd6867;
-  border-radius: 50px;
+  border-radius: 7.5vh;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
   color: #dd6867;
-  font-size: 50px;
+  font-size: 8vh;
   font-family: serif;
   font-weight: bold;
   cursor: pointer;
 
   &:hover {
     border: 3px solid #dd6867;
-    font-size: 50px;
     box-shadow: 0 2px 8px 0 rgba(221,104,103,0.8);
   }
 

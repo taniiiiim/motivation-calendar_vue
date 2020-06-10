@@ -8,6 +8,7 @@ import DayTable from './components/organisms/DayTable.vue'
 import WeekTable from './components/organisms/WeekTable.vue'
 import MonthTable from './components/organisms/MonthTable.vue'
 import YearTable from './components/organisms/YearTable.vue'
+import NotFound from './components/templates/NotFound.vue'
 
 Vue.use(Router)
 
@@ -36,22 +37,41 @@ export default new Router({
       component: CalendarView,
       children: [
         {
-          path: 'day',
+          path: 'day/:year/:month/:day',
+          meta: {
+            pageTitle: 'day'
+          },
           component: DayTable
         },
         {
-          path: 'week',
+          path: 'week/:year/:month/:day',
+          meta: {
+            pageTitle: 'week'
+          },
           component: WeekTable
         },
         {
           path: 'month/:year/:month/:day',
+          meta: {
+            pageTitle: 'month'
+          },
           component: MonthTable
         },
         {
-          path: 'year',
+          path: 'year/:year/:month/:day',
+          meta: {
+            pageTitle: 'year'
+          },
           component: YearTable
         }
       ]
+    },
+    {
+      path: '*',
+      meta: {
+        pageTitle: 'notfound'
+      },
+      component: NotFound
     }
   ]
 })
