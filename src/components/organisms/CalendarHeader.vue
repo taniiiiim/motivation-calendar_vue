@@ -29,18 +29,13 @@
 </template>
 
 <script>
-import { MONTHS } from "../../constant.js"
+import { MONTHS, TIME_SCOPES } from "../../constant.js"
 
 export default {
   name: 'calendar-header',
   data: function() {
     return {
-      timeScopes: {
-        day: "Day",
-        week: "Week",
-        month: "Month",
-        year: "Year"
-      }
+      timeScopes: TIME_SCOPES
     }
   },
   computed: {
