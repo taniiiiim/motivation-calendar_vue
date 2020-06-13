@@ -6,6 +6,8 @@
 
 <style lang="scss">
 body {
+  position: relative;
+  z-index: 1;
   background: #fafafb;
   font-family: serif;
   text-align: center;

@@ -1,5 +1,7 @@
 <template>
-  <div class="day-table">
+  <div class="carendar-table-box">
+    <div class="carendar-table">
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,21 @@ export default {
 </script>
 
 <style lang="scss">
-.day-table {
+.carendar-table-box {
+  height: 84vh;
   width: 100%;
+  padding-left: 2vh;
+  display: block;
+}
+
+.carendar-table {
+  height: 84vh;
+  width: 100%;
+  margin-right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
+  padding: 1vh;
+  display: flex;
+  overflow: hidden;
 }
 </style>

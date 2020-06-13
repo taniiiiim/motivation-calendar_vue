@@ -1,11 +1,13 @@
 <template>
-  <div class="month-table">
-    <table class="month-table-box">
+  <div class="calendar-table-month-box">
+    <table class="calendar-table-month">
       <tr>
         <th v-for="date in dates" :key="date">{{ date }}</th>
       </tr>
       <tr v-for="(weekOfMonth, index) in daysOfMonth" :key="index">
-        <td v-for="(day, index) in weekOfMonth" :key="index" :class="{ grey: !isTargetMonth(day) }">{{ day.getDate() }}</td>
+        <td v-for="(day, index) in weekOfMonth" :key="index"
+          :class="{ grey: !isTargetMonth(day), red: isCurrentDate(day) }"
+          @click='handleScheduleAdd'>{{ day.getDate() }}</td>
       </tr>
     </table>
   </div>
@@ -73,19 +75,25 @@ export default {
   methods: {
     isTargetMonth: function(day) {
       return day.getMonth() === this.targetMonth;
+    },
+    isCurrentDate: function(day) {
+      return (day.getFullYear() === this.currentYear && day.getMonth() === this.currentMonth && day.getDate() === this.currentDay);
+    },
+    handleScheduleAdd: function() {
+      this.$emit('schedule-add');
     }
   }
 }
 </script>
 
 <style lang="scss">
-.month-table {
+.calendar-table-month-box {
   height: 84vh;
   width: 100%;
   padding-left: 2vh;
 }
 
-.month-table-box {
+.calendar-table-month {
   table-layout: fixed;
   height: 84vh;
   width: 100%;
@@ -115,6 +123,9 @@ export default {
     }
     .grey {
       color: rgba(0,0,0,0.2);
+    }
+    .red {
+      color: #dd6867;
     }
   }
 }

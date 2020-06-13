@@ -4,6 +4,9 @@ export const MONTHS = [
 export const DATES = [
   "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
 ];
+export const DATE_CHARS = [
+  "S", "M", "T", "W", "T", "F", "S"
+];
 export const TIME_SCOPES = {
   day: "Day",
   week: "Week",
