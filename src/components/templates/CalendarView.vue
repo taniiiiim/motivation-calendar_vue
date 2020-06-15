@@ -41,7 +41,6 @@ export default {
 
 <style lang="scss">
 .calendar-view {
-  position: relative;
   width: 98vw;
   min-width: 150vh;
   height: 98vh;
@@ -54,22 +53,5 @@ export default {
   height: 87vh;
   margin-top: 2vh;
   display: flex;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.2s ease-out;
-}
-.v-enter {
-  opacity: 0;
-}
-.v-enter-to {
-  opacity: 1;
-}
-.v-leave {
-  opacity: 1;
-}
-.v-leave-to {
-  opacity: 0;
 }
 </style>

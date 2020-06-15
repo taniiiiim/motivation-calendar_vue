@@ -1,9 +1,9 @@
 <template>
-  <div class="carendar-table-box">
-    <div class="carendar-table">
-      <div class="mini-month-carendar-box" v-for="month in months" :key="month">
+  <div class="calendar-table-box">
+    <div class="calendar-table">
+      <span class="mini-month-carendar-box" v-for="month in months" :key="month">
         {{ month }}
-      </div>
+      </span>
     </div>
   </div>
 </template>
@@ -22,26 +22,26 @@ export default {
 </script>
 
 <style lang="scss">
-.carendar-table-box {
+.calendar-table-box {
   height: 84vh;
   width: 100%;
   padding-left: 2vh;
-  display: block;
+  overflow: hidden;
 }
 
-.carendar-table {
+.calendar-table {
   height: 84vh;
   width: 100%;
   margin-right: 0;
   background-color: #fff;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
   padding: 1vh;
+  border-collapse: separate;
   display: flex;
-  overflow: hidden;
 
   .mini-month-carendar-box {
     width: 25vh;
-    box-sizing: border-box;
+    flex-wrap: wrap;
   }
 }
 <style>

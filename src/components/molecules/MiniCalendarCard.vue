@@ -14,8 +14,8 @@
         <th v-for="(date, index) in dates" :key="index">{{ date }}</th>
       </tr>
       <tr v-for="(weekOfMonth, index) in daysOfMonth" :key="index">
-        <td v-for="(day, index) in weekOfMonth" :key="index" :value="day"
-          :class="{ grey: !isTargetMonth(day), red: isCurrentDate(day), underline: isTargetDate(day) }"
+        <td v-for="(day, index) in weekOfMonth" :key="index"
+          :class="{ nextmonth: isNextMonth(day), previousmonth: isPreviousMonth(day), currentdate: isCurrentDate(day), targetdate: !isCurrentDate(day) && isTargetDate(day) }"
           @click='handleShiftToSelectedDate'>{{ day.getDate() }}</td>
       </tr>
     </table>
@@ -93,6 +93,12 @@ export default {
     isTargetMonth: function(day) {
       return day.getMonth() === this.targetMonth;
     },
+    isNextMonth: function(day) {
+      return day.getMonth() > this.targetMonth;
+    },
+    isPreviousMonth: function(day) {
+      return day.getMonth() < this.targetMonth;
+    },
     isTargetDate: function(day) {
       return (day.getFullYear() === this.targetYear && day.getMonth() === this.targetMonth && day.getDate() === this.targetDay);
     },
@@ -142,8 +148,18 @@ export default {
       })
     },
     handleShiftToSelectedDate: function(e) {
-      let selectedDate = new Date(this.targetYear, this.targetMonth, e.target.innerHTML);
-      console.log(selectedDate);
+      let selectedDate;
+      switch(e.target.className) {
+        case "nextmonth":
+          selectedDate = new Date(this.targetYear, this.targetMonth + 1, e.target.innerHTML);
+          break;
+        case "previousmonth":
+          selectedDate = new Date(this.targetYear, this.targetMonth - 1, e.target.innerHTML);
+          break;
+        default:
+          selectedDate = new Date(this.targetYear, this.targetMonth, e.target.innerHTML);
+          break;
+      }
       if (selectedDate.getFullYear() !== this.targetYear || selectedDate.getMonth() !== this.targetMonth || selectedDate.getDate() !== this.targetDay) {
         this.$router.push({
           path: `/calendar/${this.pageTitle}/${selectedDate.getFullYear()}/${selectedDate.getMonth() + 1}/${selectedDate.getDate()}`
@@ -219,15 +235,25 @@ export default {
       &:hover {
         background: #f0f0f0;
       }
+      &:active {
+        background: rgba(0,0,0,0.2);
+      }
     }
-    .grey {
+    .nextmonth, .previousmonth {
       color: rgba(0,0,0,0.2);
     }
-    .red {
-      color: #dd6867;
+    .currentdate {
+      color: #fff;
+      background: #dd6867;
+      .targetdate {
+        color: #fff;
+      }
+      &:hover {
+        background: rgba(221,104,103,1);
+      }
     }
-    .underline {
-      text-decoration: underline;
+    .targetdate {
+      color: #dd6867;
     }
   }
 }
