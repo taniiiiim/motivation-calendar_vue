@@ -1,11 +1,6 @@
 export const MONTHS = [
   "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
 ];
-export const MONTHS_LISTS = [
-  ["January", "February", "March", "April"],
-  ["May", "June", "July", "August"],
-  ["September", "October", "November", "December"]
-];
 export const DATES = [
   "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
 ];

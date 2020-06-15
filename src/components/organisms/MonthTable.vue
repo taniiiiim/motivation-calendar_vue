@@ -6,7 +6,7 @@
       </tr>
       <tr v-for="(weekOfMonth, index) in daysOfMonth" :key="index">
         <td v-for="(day, index) in weekOfMonth" :key="index"
-          :class="{ nextmonth: isNextMonth(day), previousmonth: isPreviousMonth(day), currentdate: isCurrentDate(day) }"
+          :class="{ grey: !isTargetMonth(day), red: isCurrentDate(day) }"
           @click='handleScheduleAdd'>{{ day.getDate() }}</td>
       </tr>
     </table>
@@ -76,12 +76,6 @@ export default {
     isTargetMonth: function(day) {
       return day.getMonth() === this.targetMonth;
     },
-    isNextMonth: function(day) {
-      return day.getMonth() > this.targetMonth;
-    },
-    isPreviousMonth: function(day) {
-      return day.getMonth() < this.targetMonth;
-    },
     isCurrentDate: function(day) {
       return (day.getFullYear() === this.currentYear && day.getMonth() === this.currentMonth && day.getDate() === this.currentDay);
     },
@@ -126,14 +120,11 @@ export default {
       &:hover {
         background: #f0f0f0;
       }
-      &:active {
-        background: rgba(0,0,0,0.2);
-      }
     }
-    .nextmonth, .previousmonth {
+    .grey {
       color: rgba(0,0,0,0.2);
     }
-    .currentdate {
+    .red {
       color: #dd6867;
     }
   }
